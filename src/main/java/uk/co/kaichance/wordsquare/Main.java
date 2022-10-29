@@ -9,6 +9,7 @@ import uk.co.kaichance.wordsquare.util.MapUtils;
 import uk.co.kaichance.wordsquare.util.WordListUtils;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class Main {
             WordGrid wg = new WordGrid(wordSize);
             Input input = new Input(inputString.toLowerCase());
             String dictionaryFile = args.length > 2 ? args[2] : DEFAULT_FILENAME;
-            Set<String> words = WordListUtils.processList(dictionaryFile, input.getCharacterIntegerMap().keySet(), wordSize);
+            List<String> words = WordListUtils.processList(dictionaryFile, input.getCharacterIntegerMap().keySet(), wordSize);
             Map<Character, Integer> characterIntegerMap = MapUtils.deepCloneMap(input.getCharacterIntegerMap()); //deep clone
 
             if (CoreAlgorithm.solveWordsquare(wg, words, wordSize, characterIntegerMap)) {
