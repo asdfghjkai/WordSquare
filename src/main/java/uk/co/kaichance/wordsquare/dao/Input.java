@@ -1,12 +1,14 @@
-package uk.co.kaichance.wordsquare.algorithm;
+package uk.co.kaichance.wordsquare.dao;
+
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Input {
 
-    String originalVals;
-    public Map<Character, Integer> characterIntegerMap;
+    @Getter
+    private Map<Character, Integer> characterIntegerMap;
 
     public Input(String inputString) {
         this.characterIntegerMap = new HashMap<>();

@@ -10,10 +10,10 @@ public class MapUtils {
      * @param inputMap
      * @return
      */
-    public static Map<Character, Integer> deepCopyMap(Map<Character, Integer> inputMap) {
+    public static Map<Character, Integer> deepCloneMap(Map<Character, Integer> inputMap) {
         Map<Character, Integer> newMap = new HashMap<>(inputMap.size());
         for (Map.Entry<Character, Integer> entry : inputMap.entrySet()) {
-            newMap.put(entry.getKey(), new Integer(entry.getValue().intValue()));
+            newMap.put(entry.getKey(), entry.getValue().intValue());
         }
         return newMap;
     }
