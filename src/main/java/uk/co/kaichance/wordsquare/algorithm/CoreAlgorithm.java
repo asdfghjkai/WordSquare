@@ -10,45 +10,46 @@ import java.util.stream.Collectors;
 
 public class CoreAlgorithm {
 
-        public static boolean solveWordsquare(WordGrid wg, Set<String> words, int maxDepth, Map<Character, Integer> remainingCharacters) {
-                return solveWordsquare(wg, words, 0, maxDepth, remainingCharacters);
+    public static boolean solveWordsquare(WordGrid wg, Set<String> words, int maxDepth, Map<Character, Integer> remainingCharacters) {
+        return solveWordsquare(wg, words, 0, maxDepth, remainingCharacters);
+    }
+
+    private static boolean solveWordsquare(WordGrid wg, Set<String> words, int currentDepth, int maxDepth, Map<Character, Integer> remainingCharacters) {
+        if (currentDepth == maxDepth) {
+            return true; // Close the 'loop'
         }
-        private static boolean solveWordsquare(WordGrid wg, Set<String> words, int currentDepth, int maxDepth, Map<Character, Integer> remainingCharacters) {
-                if (currentDepth == maxDepth) {
-                        return true; // Close the 'loop'
-                }
-                HashMap<Character, Integer> characterIntegerHashMap = new HashMap<>();
-                Set<String> depthWords = words.stream().filter(word ->
-                        {
-                                characterIntegerHashMap.clear();
-                                for (char c : word.toCharArray()) {
-                                        characterIntegerHashMap.merge(c, 1, Integer::sum);
-                                }
-                                for (Map.Entry<Character, Integer> entry : characterIntegerHashMap.entrySet()) {
-                                        if (remainingCharacters.get(entry.getKey()) < entry.getValue()) { //wg.placeCount.get(row[i])
-                                                return false;
-                                        }
-
-                                }
-                                return true;
-                        })
-                        .collect(Collectors.toSet());
-
-                Set<String> currentDepthWords = depthWords.stream().filter(word -> wg.validateRow(currentDepth, word.toCharArray())).collect(Collectors.toSet());
-
-                for (String word : currentDepthWords) {
-                        wg.clearRow(currentDepth);
-                        Map<Character, Integer> nextDepthRemainingCharacters = MapUtils.deepCloneMap(remainingCharacters); //impove perf
-                        boolean done = false;
-                        if (wg.insertToGrid(word, currentDepth)) {
-                                for (char c : word.toCharArray()) {
-                                        nextDepthRemainingCharacters.put(c, nextDepthRemainingCharacters.get(c)-1);
-                                }
-                                done = solveWordsquare(wg, depthWords, currentDepth+1, maxDepth, nextDepthRemainingCharacters);
+        HashMap<Character, Integer> characterIntegerHashMap = new HashMap<>();
+        Set<String> depthWords = words.stream().filter(word ->
+                {
+                    characterIntegerHashMap.clear();
+                    for (char c : word.toCharArray()) {
+                        characterIntegerHashMap.merge(c, 1, Integer::sum);
+                    }
+                    for (Map.Entry<Character, Integer> entry : characterIntegerHashMap.entrySet()) {
+                        if (remainingCharacters.get(entry.getKey()) < entry.getValue()) { //wg.placeCount.get(row[i])
+                            return false;
                         }
-                        if (done) return true;
+
+                    }
+                    return true;
+                })
+                .collect(Collectors.toSet());
+
+        Set<String> currentDepthWords = depthWords.stream().filter(word -> wg.validateRow(currentDepth, word.toCharArray())).collect(Collectors.toSet());
+
+        for (String word : currentDepthWords) {
+            wg.clearRow(currentDepth);
+            Map<Character, Integer> nextDepthRemainingCharacters = MapUtils.deepCloneMap(remainingCharacters); //impove perf
+            boolean done = false;
+            if (wg.insertToGrid(word, currentDepth)) {
+                for (char c : word.toCharArray()) {
+                    nextDepthRemainingCharacters.put(c, nextDepthRemainingCharacters.get(c) - 1);
                 }
-                wg.clearRow(currentDepth);
-                return false;
+                done = solveWordsquare(wg, depthWords, currentDepth + 1, maxDepth, nextDepthRemainingCharacters);
+            }
+            if (done) return true;
         }
+        wg.clearRow(currentDepth);
+        return false;
+    }
 }

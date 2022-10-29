@@ -11,6 +11,7 @@ public class ArgumentValidation {
 
     /**
      * Assert argument lengths. There should be two, however if there are more, than 2, or there is 1, the method will return true to allow further methods to assert validity.
+     *
      * @param args
      * @return
      */
@@ -21,7 +22,7 @@ public class ArgumentValidation {
         } else if (args.length == 1) {
             log.warn("Not enough args provided");
             return true;
-        } else if (args.length == 0){
+        } else if (args.length == 0) {
             log.error("No args provided");
             return false;
         } else {
@@ -41,6 +42,7 @@ public class ArgumentValidation {
 
     /**
      * Ensure n^2 characters are provided to the application
+     *
      * @param args
      * @return
      */

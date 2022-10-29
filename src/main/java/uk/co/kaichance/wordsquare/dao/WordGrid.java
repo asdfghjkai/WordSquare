@@ -23,9 +23,9 @@ public class WordGrid {
         int x = 1;
         for (int i = 1; i <= size; i++) {
             for (int j = i; j <= size; j++) {
-                nums[i-1][j-1] = x;
-                nums[j-1][i-1] = x;
-                placeCount.merge(x,((i==j)?1:2),Integer::sum);
+                nums[i - 1][j - 1] = x;
+                nums[j - 1][i - 1] = x;
+                placeCount.merge(x, ((i == j) ? 1 : 2), Integer::sum);
                 x++;
             }
         }
@@ -101,6 +101,7 @@ public class WordGrid {
 
     /**
      * Clear row using staircasing rule(?)
+     *
      * @param row
      */
     public void clearRow(int row) {
