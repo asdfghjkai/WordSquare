@@ -11,7 +11,6 @@ import uk.co.kaichance.wordsquare.util.WordListUtils;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Slf4j
 public class Main {

@@ -3,7 +3,10 @@ package uk.co.kaichance.wordsquare.algorithm;
 import uk.co.kaichance.wordsquare.dao.WordGrid;
 import uk.co.kaichance.wordsquare.util.MapUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class CoreAlgorithm {
