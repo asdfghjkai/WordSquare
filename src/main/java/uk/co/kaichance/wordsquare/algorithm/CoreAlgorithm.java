@@ -11,6 +11,18 @@ import java.util.stream.Collectors;
 
 public class CoreAlgorithm {
 
+    private CoreAlgorithm() {
+    } //Private Constructor
+
+    /**
+     * Primary static method for solving wordsquare puzzles. Calls a private method by the same name, with current depth as zero to start the solve
+     *
+     * @param wg
+     * @param words
+     * @param maxDepth
+     * @param remainingCharacters
+     * @return
+     */
     public static boolean solveWordsquare(WordGrid wg, List<String> words, int maxDepth, Map<Character, Integer> remainingCharacters) {
         return solveWordsquare(wg, words, 0, maxDepth, remainingCharacters);
     }
@@ -19,7 +31,6 @@ public class CoreAlgorithm {
         if (currentDepth == maxDepth) {
             return true; // Close the 'loop'
         }
-        HashMap<Character, Integer> characterIntegerHashMap = new HashMap<>();
         List<String> depthWords = words.stream().filter(word -> currentDepthFilter(word, remainingCharacters))
                 .sorted()
                 .collect(Collectors.toList());

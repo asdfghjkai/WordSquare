@@ -13,23 +13,27 @@ import java.util.stream.Stream;
 
 @Slf4j
 public class WordListUtils {
+
+    private WordListUtils() {
+    }
+
+    ;
+
     public static List<String> processList(String filePath, Set<Character> chars, int length) {
         log.debug("Using Dictionary {}", filePath);
         Path path = Path.of(filePath);
         if (Files.exists(path)) {
             try (Stream<String> fileStream = Files.lines(path)) {
-                List<String> words =
-                        fileStream.filter(s -> s.length() == length).filter(line -> {
-                                    for (Character c : line.toCharArray()) {
-                                        if (!chars.contains(c)) {
-                                            return false;
-                                        }
-                                    }
-                                    return true;
-                                })
-                                .sorted()
-                                .collect(Collectors.toList());
-                return words;
+                return fileStream.filter(s -> s.length() == length).filter(line -> {
+                            for (Character c : line.toCharArray()) {
+                                if (!chars.contains(c)) {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        })
+                        .sorted()
+                        .collect(Collectors.toList());
             } catch (IOException e) {
                 log.error("Exception thrown when reading file {} - {}", filePath, e);
                 return new ArrayList<>();

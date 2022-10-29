@@ -5,6 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ArgumentValidation {
 
+    private ArgumentValidation() {
+    } //Private constructor
+
     public static boolean validateArgs(String[] args) {
         return checkArgLength(args) && ensureWordLengthCanBeParsed(args) && correctCharactersProvided(args);
     }

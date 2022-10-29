@@ -1,10 +1,12 @@
 package uk.co.kaichance.wordsquare.dao;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 public class Input {
 
     @Getter
@@ -18,9 +20,9 @@ public class Input {
     }
 
     public void printMap() {
-        System.out.println("|Char:\t|Count:\t|");
-        for (Character c : characterIntegerMap.keySet()) {
-            System.out.println(String.format("|%s\t\t|%s\t\t|", c, this.characterIntegerMap.get(c)));
+        log.trace("|Char:\t|Count:\t|");
+        for (Map.Entry<Character, Integer> entry : this.characterIntegerMap.entrySet()) {
+            log.trace("|{}\t\t|{}\t\t|", entry.getKey(), entry.getValue());
         }
     }
 }

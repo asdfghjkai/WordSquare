@@ -37,7 +37,7 @@ public class WordGrid {
         for (int i = 0; i < nums.length; i++) {
             String outputString = "|";
             for (int j = 0; j < nums[0].length; j++) {
-                outputString.concat(nums[i][j] + "\t|");
+                outputString += (nums[i][j] + "\t|");
             }
             log.trace(outputString);
         }
@@ -45,8 +45,8 @@ public class WordGrid {
 
     public void printPlaceCount() {
         log.trace("\n\n|Place:\t|Count:\t|");
-        for (Integer i : this.placeCount.keySet()) {
-            log.trace("|{}\t\t|{}\t\t|", i, this.placeCount.get(i));
+        for (Map.Entry<Integer, Integer> entry : this.placeCount.entrySet()) {
+            log.trace("|{}\t\t|{}\t\t|", entry.getKey(), entry.getValue());
         }
     }
 
