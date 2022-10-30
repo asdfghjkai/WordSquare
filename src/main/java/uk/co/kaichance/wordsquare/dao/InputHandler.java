@@ -18,6 +18,7 @@ public class InputHandler {
     /**
      * Public constructor for InputHandler, maps characters in a provided string into counts, and places
      * into a map, which can be accessed by {@link #getCharacterCountMap()}
+     *
      * @param inputString String of characters
      */
     public InputHandler(String inputString) {

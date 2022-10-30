@@ -13,6 +13,7 @@ public class ArgumentValidation {
 
     /**
      * Public worker method to validate arguments provided to the application
+     *
      * @param args commandline args
      * @return True is args are 'valid'
      */
@@ -44,6 +45,7 @@ public class ArgumentValidation {
 
     /**
      * Assert that the word length value arg[0] can be parsed as an int
+     *
      * @param args
      * @return
      */

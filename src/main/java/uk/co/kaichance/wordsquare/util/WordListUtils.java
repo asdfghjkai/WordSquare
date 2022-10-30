@@ -22,9 +22,10 @@ public class WordListUtils {
 
     /**
      * Attempts to resolve the file provided, and if successful, streams and filters the contents in line with the constraints provided.
+     *
      * @param filePath filename
-     * @param chars Filter to ensure words only contain characters provided
-     * @param length Filter to ensure words are only of this length
+     * @param chars    Filter to ensure words only contain characters provided
+     * @param length   Filter to ensure words are only of this length
      * @return List of words. Empty if an error is encountered.
      */
     public static List<String> processList(String filePath, Set<Character> chars, int length) {

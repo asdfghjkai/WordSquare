@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Class responsible for holding the core logic to solve WordSquare puzzles.
- *
+ * <p>
  * Utilizes a depth-first recursive solving algorithm, to identify WordSquare solutions,
  * using an ever decreasing dictionary of words based on criterion determined by
  * previously 'solved' rows
@@ -25,9 +25,9 @@ public class CoreAlgorithm {
      * Primary static overloaded method for solving WordSquare puzzles.
      * Calls a private method by the same name, with current depth as zero to start the solve
      *
-     * @param wg WordGrid - an implementation of the WordGrid interface
-     * @param words A list of words to solve the puzzle, a dictionary in the desired language
-     * @param maxDepth Maximum number of levels to descent (equal to the length of the desired words)
+     * @param wg                  WordGrid - an implementation of the WordGrid interface
+     * @param words               A list of words to solve the puzzle, a dictionary in the desired language
+     * @param maxDepth            Maximum number of levels to descent (equal to the length of the desired words)
      * @param remainingCharacters Map containing characters given in the input string, and quantities
      * @return true if successful, and values are placed within wg. Otherwise, false.
      */
@@ -37,10 +37,11 @@ public class CoreAlgorithm {
 
     /**
      * Core worker method for solving WordSquare Puzzles recursively
-     * @param wg WordGrid - an implementation of the WordGrid interface
-     * @param words A list of words to solve the puzzle, a dictionary in the desired language - size decreases as depth increases
-     * @param currentDepth Current recursive depth
-     * @param maxDepth Maximum number of levels to descent (equal to the length of the desired words)
+     *
+     * @param wg                  WordGrid - an implementation of the WordGrid interface
+     * @param words               A list of words to solve the puzzle, a dictionary in the desired language - size decreases as depth increases
+     * @param currentDepth        Current recursive depth
+     * @param maxDepth            Maximum number of levels to descent (equal to the length of the desired words)
      * @param remainingCharacters Map containing characters given in the input string, and quantities
      * @return true if successful, and values are placed within wg. Otherwise, false.
      */
@@ -87,7 +88,8 @@ public class CoreAlgorithm {
     /**
      * Filter used for determining words which remain valid at the remaining depths,
      * based on characters which have not been utilized previously
-     * @param word Word to assert characters against
+     *
+     * @param word                Word to assert characters against
      * @param remainingCharacters Map of Character, and Count of Integer for number remaining
      * @return
      */

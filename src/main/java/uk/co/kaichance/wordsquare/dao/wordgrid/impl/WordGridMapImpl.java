@@ -1,7 +1,6 @@
 package uk.co.kaichance.wordsquare.dao.wordgrid.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import uk.co.kaichance.wordsquare.dao.wordgrid.WordGrid;
@@ -34,18 +33,19 @@ public class WordGridMapImpl implements WordGrid {
      */
     public void printFinalCharacterGrid() {
         for (int i = 0; i < this.size; i++) {
-            String word = StringUtils.EMPTY;
+            StringBuilder word = new StringBuilder();
             for (int j = 0; j < this.size; j++) {
-                word += this.characterMap.get(new ImmutablePair<>(i, j));
+                word.append(this.characterMap.get(new ImmutablePair<>(i, j)));
             }
-            log.info(word);
+            log.info(word.toString());
         }
     }
 
     /**
      * Insert the provided string into the internal map
+     *
      * @param chars Characters to place on row
-     * @param row Desired row to place characters on
+     * @param row   Desired row to place characters on
      * @return Success state
      */
     public boolean insertToGrid(String chars, int row) {
@@ -54,8 +54,9 @@ public class WordGridMapImpl implements WordGrid {
 
     /**
      * Insert the provided characters into the internal map - utilizing {@link #validateRow(int, char[])}
+     *
      * @param chars Characters to place on row
-     * @param row Desired row to place characters on
+     * @param row   Desired row to place characters on
      * @return Success state
      */
     public boolean insertToGrid(char[] chars, int row) {
@@ -82,7 +83,8 @@ public class WordGridMapImpl implements WordGrid {
      *     <li>The existing character in null</li>
      *     <li>The existing character is equal to that which is due to be placed</li>
      * </ol>
-     * @param row desired target row
+     *
+     * @param row        desired target row
      * @param characters Character array to be placed
      * @return true if characters would be valid in row, otherwise false
      */
@@ -113,15 +115,16 @@ public class WordGridMapImpl implements WordGrid {
 
     /**
      * Iterates through coordinates, outputting the desired row
+     *
      * @param row Row to retrieve
      * @return String containing contents of row specified
      */
     public String getRowSoFar(int row) {
-        String rowSoFar = StringUtils.EMPTY;
+        StringBuilder rowSoFar = new StringBuilder();
         for (int j = 0; j < this.size; j++) {
-            rowSoFar += this.characterMap.get(new ImmutablePair<>(row, j));
+            rowSoFar.append(this.characterMap.get(new ImmutablePair<>(row, j)));
         }
-        return rowSoFar.trim();
+        return rowSoFar.toString().trim();
     }
 }
 

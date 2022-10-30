@@ -3,7 +3,7 @@ package uk.co.kaichance.wordsquare;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import uk.co.kaichance.wordsquare.algorithm.CoreAlgorithm;
-import uk.co.kaichance.wordsquare.dao.*;
+import uk.co.kaichance.wordsquare.dao.InputHandler;
 import uk.co.kaichance.wordsquare.dao.wordgrid.WordGrid;
 import uk.co.kaichance.wordsquare.dao.wordgrid.WordGridFactory;
 import uk.co.kaichance.wordsquare.dao.wordgrid.WordGridImplType;
@@ -22,12 +22,12 @@ import java.util.Map;
  * <ul>
  *     <li>enable1.txt exists on path</li>
  * </ul>
- *
+ * <p>
  * Requires the following parameters
  * <ul>
  *     <li><code>n abcdefghijklmnop [dictionary.txt] [array]</code></li>
  * </ul>
- *
+ * <p>
  * Optional args do the following, and must be placed sequentially if required
  * <ul>
  *     <li>[dictionary.txt] - allows the specificaiton of a custom dictionary file</li>
@@ -55,7 +55,7 @@ public class Main {
             } else {
                 wg = WordGridFactory.getWordGridImpl(WordGridImplType.MAP, wordSize);
             }
-            
+
             InputHandler input = new InputHandler(inputString.toLowerCase());
             String dictionaryFile = args.length > 2 ? args[2] : DEFAULT_FILENAME;
             List<String> words = WordListUtils.processList(dictionaryFile, input.getCharacterCountMap().keySet(), wordSize);

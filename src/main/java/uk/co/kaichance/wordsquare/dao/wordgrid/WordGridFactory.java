@@ -9,16 +9,18 @@ import uk.co.kaichance.wordsquare.dao.wordgrid.impl.WordGridMapImpl;
  */
 public class WordGridFactory {
 
-    private WordGridFactory() {};
+    private WordGridFactory() {
+    }
 
     /**
      * WordGrid Factory Method
+     *
      * @param wordGridImplType Implementation Type
-     * @param size size of output word
+     * @param size             size of output word
      * @return WordGrid impl of type defined (default ARRAY);
      */
     public static WordGrid getWordGridImpl(WordGridImplType wordGridImplType, int size) {
-        switch(wordGridImplType) {
+        switch (wordGridImplType) {
             case MAP:
                 return new WordGridMapImpl(size);
             case ARRAY:
