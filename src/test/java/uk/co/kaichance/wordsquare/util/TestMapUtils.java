@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TestMapUtils {
+class TestMapUtils {
 
     @Test
-    public void testDeepCopy() {
+    void testDeepCopy() {
         Map<Character, Integer> map = new HashMap<>();
         map.put('a', 1);
         Assertions.assertFalse(map.isEmpty());

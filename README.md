@@ -12,7 +12,7 @@ send
 ends
 ```
 
-And so on and so forth, other examples can be found in the [WordSquareTestCase](src/test/java/uk/co/kaichance/wordsquare/algorithm/WordSquareTestCase.java) class, alongside solutions. 
+And so on and so forth, other examples can be found in the [WordSquareTestCase](src/test/java/uk/co/kaichance/wordsquare/algorithm/WordSquareTestCases.java) class, alongside solutions. 
 Note that test case 3 in particular has more than one solution, this application only finds the first.
 
 Note: There might not be only one solution to provided characters! Source dictionaries are sorted on load, and therefore should be consistent.

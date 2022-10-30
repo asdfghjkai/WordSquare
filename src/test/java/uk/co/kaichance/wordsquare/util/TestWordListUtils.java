@@ -7,10 +7,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class TestWordListUtils {
+class TestWordListUtils {
 
     @Test
-    public void testValidFile() {
+    void testValidFile() {
         List<String> list = WordListUtils.processList("enable1.txt", new HashSet<Character>(Arrays.asList('a', 'b', 'l')), 4);
         Assertions.assertNotNull(list);
         Assertions.assertTrue(list instanceof List);
@@ -18,7 +18,7 @@ public class TestWordListUtils {
     }
 
     @Test
-    public void testValidFileInvalidParameters() {
+    void testValidFileInvalidParameters() {
         List<String> list = WordListUtils.processList("enable1.txt", new HashSet<>(Arrays.asList('a', 'b', 'l')), 0);
         Assertions.assertNotNull(list);
         Assertions.assertTrue(list instanceof List);
@@ -31,7 +31,7 @@ public class TestWordListUtils {
     }
 
     @Test
-    public void testInvalidFile() {
+    void testInvalidFile() {
         List<String> list = WordListUtils.processList("balls.txt", new HashSet<>(Arrays.asList('a', 'b', 'l')), 4);
         Assertions.assertNotNull(list);
         Assertions.assertTrue(list instanceof List);
@@ -39,7 +39,7 @@ public class TestWordListUtils {
     }
 
     @Test
-    public void testEmptyFile() {
+    void testEmptyFile() {
         List<String> list = WordListUtils.processList("emptyfile.txt", new HashSet<>(Arrays.asList('a', 'b', 'l')), 4);
         Assertions.assertNotNull(list);
         Assertions.assertTrue(list instanceof List);

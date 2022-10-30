@@ -11,7 +11,6 @@ import uk.co.kaichance.wordsquare.util.ArgumentValidation;
 import uk.co.kaichance.wordsquare.util.MapUtils;
 import uk.co.kaichance.wordsquare.util.WordListUtils;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +38,7 @@ public class Main {
     private static final String DEFAULT_FILENAME = "enable1.txt";
     private static final String PARAMETER_ARRAY = "array";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         log.debug("Begin WordSquare App");
         if (!ArgumentValidation.validateArgs(args)) {
             log.error("Could not validate args - exiting");
