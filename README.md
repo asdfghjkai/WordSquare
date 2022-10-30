@@ -71,4 +71,4 @@ and then stopping the recursion when exceeding max depth, or on solution.
 - Write README
 
 ## Testing Coverage
-All tests passing - coverage at 90% class, 89% method, and 78% line.
+All tests passing - coverage at 100% class, 97% method, and 90% line.
