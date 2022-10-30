@@ -1,5 +1,6 @@
 package uk.co.kaichance.wordsquare.algorithm;
 
+import org.apache.commons.lang3.StringUtils;
 import uk.co.kaichance.wordsquare.dao.WordGrid;
 import uk.co.kaichance.wordsquare.util.MapUtils;
 
@@ -31,17 +32,20 @@ public class CoreAlgorithm {
         if (currentDepth == maxDepth) {
             return true; // Close the 'loop'
         }
-        List<String> depthWords = words.stream()
-                .filter(word -> currentDepthFilter(word, remainingCharacters))
-                .sorted()
+
+        List<String> validWordsAtRemainingDepths = words.stream()
+                .filter(word -> remainingCharactersFilter(word, remainingCharacters))
                 .collect(Collectors.toList());
+
 
         List<String> currentDepthWords;
         if (currentDepth != 0) {
-            currentDepthWords = depthWords.stream().filter(word -> wg.validateRow(currentDepth, word.toCharArray())).collect(Collectors.toList());
+            currentDepthWords = validWordsAtRemainingDepths.stream()
+                    .filter(word -> wg.validateRow(currentDepth, word.toCharArray()))
+                    .collect(Collectors.toList());
         } else {
             currentDepthWords = new ArrayList<>();
-            currentDepthWords.addAll(depthWords);
+            currentDepthWords.addAll(validWordsAtRemainingDepths);
         }
 
         for (String word : currentDepthWords) {
@@ -56,7 +60,7 @@ public class CoreAlgorithm {
                     }
                     nextDepthRemainingCharacters.put(c, remainingCount);
                 }
-                done = solveWordsquare(wg, depthWords, currentDepth + 1, maxDepth, nextDepthRemainingCharacters);
+                done = solveWordsquare(wg, validWordsAtRemainingDepths, currentDepth + 1, maxDepth, nextDepthRemainingCharacters);
             }
             if (done) return true;
         }
@@ -64,16 +68,9 @@ public class CoreAlgorithm {
         return false;
     }
 
-    private static boolean currentDepthFilter(String word, Map<Character, Integer> remainingCharacters) {
-        Map<Character, Integer> characterIntegerMap = new HashMap<>();
-        for (char c : word.toCharArray()) {
-            if (!remainingCharacters.containsKey(c)) {
-                return false;
-            }
-            characterIntegerMap.merge(c, 1, Integer::sum);
-        }
-        for (Map.Entry<Character, Integer> entry : characterIntegerMap.entrySet()) {
-            if (remainingCharacters.get(entry.getKey()) < entry.getValue()) { //wg.placeCount.get(row[i])
+    private static boolean remainingCharactersFilter(String word, Map<Character, Integer> remainingCharacters) {
+        for (Map.Entry<Character, Integer> entry : remainingCharacters.entrySet()) {
+            if (StringUtils.countMatches(word, entry.getKey()) > entry.getValue()) {
                 return false;
             }
         }

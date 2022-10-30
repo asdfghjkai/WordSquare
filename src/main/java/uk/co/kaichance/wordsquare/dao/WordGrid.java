@@ -110,4 +110,8 @@ public class WordGrid {
             finalCharGrid[j][row] = '\u0000';
         }
     }
+
+    public String getRowSoFar(int row) {
+        return String.valueOf(this.finalCharGrid[row]).trim();
+    }
 }
