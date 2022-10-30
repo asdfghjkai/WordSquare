@@ -1,55 +1,17 @@
 package uk.co.kaichance.wordsquare.dao;
 
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Slf4j
 public class WordGrid {
-
-    @Getter
-    private int[][] nums;
     private char[][] finalCharGrid;
-    private Map<Integer, Integer> placeCount;
 
     private static final char NULL_CHAR = '\u0000';
 
 
     public WordGrid(int size) {
         log.debug("Assemble WordGrid");
-        nums = new int[size][size];
         finalCharGrid = new char[size][size];
-        placeCount = new HashMap<>();
-        int x = 1;
-        for (int i = 1; i <= size; i++) {
-            for (int j = i; j <= size; j++) {
-                nums[i - 1][j - 1] = x;
-                nums[j - 1][i - 1] = x;
-                placeCount.merge(x, ((i == j) ? 1 : 2), Integer::sum);
-                x++;
-            }
-        }
-        printArray();
-        printPlaceCount();
-    }
-
-    public void printArray() {
-        for (int i = 0; i < nums.length; i++) {
-            String outputString = "|";
-            for (int j = 0; j < nums[0].length; j++) {
-                outputString += (nums[i][j] + "\t|");
-            }
-            log.trace(outputString);
-        }
-    }
-
-    public void printPlaceCount() {
-        log.trace("\n\n|Place:\t|Count:\t|");
-        for (Map.Entry<Integer, Integer> entry : this.placeCount.entrySet()) {
-            log.trace("|{}\t\t|{}\t\t|", entry.getKey(), entry.getValue());
-        }
     }
 
     public void printFinalCharacterGrid() {
