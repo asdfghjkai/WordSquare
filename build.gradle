@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'uk.co.kaichance.wordsquare'
@@ -10,20 +11,17 @@ repositories {
 }
 
 dependencies {
-    //Justficiation
     implementation 'org.apache.commons:commons-collections4:4.4'
-    //Use/Justification
     implementation 'org.apache.commons:commons-lang3:3.12.0'
-    //Use/Justification - Logging API
     implementation 'org.slf4j:slf4j-api:2.0.3'
-    //Use/Justification: Reduce boilerplate code
-    compileOnly 'org.projectlombok:lombok:1.18.22'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
     implementation 'ch.qos.logback:logback-classic:1.4.4'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
 test {
