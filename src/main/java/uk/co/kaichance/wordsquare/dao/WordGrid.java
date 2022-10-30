@@ -14,6 +14,8 @@ public class WordGrid {
     private char[][] finalCharGrid;
     private Map<Integer, Integer> placeCount;
 
+    private static final char NULL_CHAR = '\u0000';
+
 
     public WordGrid(int size) {
         log.debug("Assemble WordGrid");
@@ -80,18 +82,13 @@ public class WordGrid {
         } else {
             return false;
         }
-
-
     }
 
     public boolean validateRow(int row, char[] characters) {
         for (int j = 0; j < characters.length; j++) {
-            //row is i
-            if (row == j) {
-                //single entry, should be okay
-            } else {
+            if (row != j) {
                 //check existing places
-                if (finalCharGrid[row][j] != '\u0000' && finalCharGrid[row][j] != characters[j]) {
+                if (finalCharGrid[row][j] != NULL_CHAR && finalCharGrid[row][j] != characters[j]) {
                     return false; //chars in place, and do not match existing
                 }
             }
@@ -106,12 +103,8 @@ public class WordGrid {
      */
     public void clearRow(int row) {
         for (int j = row; j < finalCharGrid[row].length; j++) {
-            finalCharGrid[row][j] = '\u0000';
-            finalCharGrid[j][row] = '\u0000';
+            finalCharGrid[row][j] = NULL_CHAR;
+            finalCharGrid[j][row] = NULL_CHAR;
         }
-    }
-
-    public String getRowSoFar(int row) {
-        return String.valueOf(this.finalCharGrid[row]).trim();
     }
 }

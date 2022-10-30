@@ -40,7 +40,7 @@ public class CoreAlgorithm {
 
         List<String> currentDepthWords;
         if (currentDepth != 0) {
-            currentDepthWords = validWordsAtRemainingDepths.stream()
+            currentDepthWords = validWordsAtRemainingDepths.parallelStream()
                     .filter(word -> wg.validateRow(currentDepth, word.toCharArray()))
                     .collect(Collectors.toList());
         } else {
