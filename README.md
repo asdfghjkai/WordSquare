@@ -20,7 +20,7 @@ Note: There might not be only one solution to provided characters! Source dictio
 ## Usage
 Execute as follows
 
-> `java -jar wordsquare.jar 4 eeeeddoonnnsssrv dictionary.txt array`
+`java -jar wordsquare.jar 4 eeeeddoonnnsssrv dictionary.txt array`
 
 Output is to the command line. Both the dictionary and array arguments are optional, but to input the latter, the former is required, as no advanced option parsing is included.
 
@@ -41,7 +41,7 @@ When building code, ensure the following
 - IDE has annotation processing enabled
 
 
-## Impl
+## Implementation
 ### Tools and Libraries
 - Apache Commons Collections
 - Apache Commons Lang
@@ -64,6 +64,7 @@ and then stopping the recursion when exceeding max depth, or on solution.
 - Craft validation around the above rule, and use this to filter acceptable results
 - Ensure the application is tolerant to bad arguments passed
 - Ensure the application is tolerant to configurable logging
+- Implement an alternative implementation, using a map versus 2D arrays to solve
 - Use a parallel stream, the cost of merging streams is negated by performance improvements
 - When streaming, following inspection with JProfiler, utilise StringUtils.countMatches within the stream in CoreAlgorithm over creating another structure and iterating twice, to improve performance
 - Refactor, add JavaDoc coverage, and testing coverage.
