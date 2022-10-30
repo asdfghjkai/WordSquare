@@ -20,7 +20,7 @@ Note: There might not be only one solution to provided characters! Source dictio
 ## Usage
 Execute as follows
 
-`java -jar wordsquare.jar 4 eeeeddoonnnsssrv dictionary.txt array`
+`java -jar WordSquare-1.1-RELEASE.jar 4 eeeeddoonnnsssrv dictionary.txt array`
 
 Output is to the command line. Both the dictionary and array arguments are optional, but to input the latter, the former is required, as no advanced option parsing is included.
 
