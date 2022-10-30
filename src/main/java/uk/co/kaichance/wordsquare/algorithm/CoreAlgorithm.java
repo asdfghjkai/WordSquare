@@ -33,7 +33,7 @@ public class CoreAlgorithm {
             return true; // Close the 'loop'
         }
 
-        List<String> validWordsAtRemainingDepths = words.stream()
+        List<String> validWordsAtRemainingDepths = words.parallelStream()
                 .filter(word -> remainingCharactersFilter(word, remainingCharacters))
                 .collect(Collectors.toList());
 
