@@ -1,8 +1,10 @@
-package uk.co.kaichance.wordsquare.dao;
+package uk.co.kaichance.wordsquare.dao.wordgrid.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import uk.co.kaichance.wordsquare.dao.wordgrid.WordGrid;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +34,7 @@ public class WordGridMapImpl implements WordGrid {
      */
     public void printFinalCharacterGrid() {
         for (int i = 0; i < this.size; i++) {
-            String word = "";
+            String word = StringUtils.EMPTY;
             for (int j = 0; j < this.size; j++) {
                 word += this.characterMap.get(new ImmutablePair<>(i, j));
             }
@@ -108,4 +110,19 @@ public class WordGridMapImpl implements WordGrid {
             this.characterMap.put(new ImmutablePair<>(j, row), NULL_CHAR);
         }
     }
+
+    /**
+     * Iterates through coordinats, outputting the desired row
+     * @param row
+     * @return
+     */
+    public String getRowSoFar(int row) {
+        String rowSoFar = StringUtils.EMPTY;
+        for (int j = 0; j < this.size; j++) {
+            rowSoFar += this.characterMap.get(new ImmutablePair<>(row, j));
+        }
+        return rowSoFar.trim();
+    }
 }
+
+

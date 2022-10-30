@@ -1,4 +1,4 @@
-package uk.co.kaichance.wordsquare.dao;
+package uk.co.kaichance.wordsquare.dao.wordgrid;
 
 /**
  * Interface class for WordGrid solvers, to allow polymorphism around implementation at runtime
@@ -43,5 +43,12 @@ public interface WordGrid {
      * @param row
      */
     void clearRow(int row);
+
+    /**
+     * Intended to output the row as it has been built - primarily for testing purposes
+     * @param row
+     * @return
+     */
+    String getRowSoFar(int row);
 
 }

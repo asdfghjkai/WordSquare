@@ -1,7 +1,7 @@
 package uk.co.kaichance.wordsquare.algorithm;
 
 import org.apache.commons.lang3.StringUtils;
-import uk.co.kaichance.wordsquare.dao.WordGrid;
+import uk.co.kaichance.wordsquare.dao.wordgrid.WordGrid;
 import uk.co.kaichance.wordsquare.util.MapUtils;
 
 import java.util.ArrayList;

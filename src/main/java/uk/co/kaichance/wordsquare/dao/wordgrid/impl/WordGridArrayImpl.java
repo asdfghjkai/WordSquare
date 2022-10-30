@@ -1,6 +1,7 @@
-package uk.co.kaichance.wordsquare.dao;
+package uk.co.kaichance.wordsquare.dao.wordgrid.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import uk.co.kaichance.wordsquare.dao.wordgrid.WordGrid;
 
 /**
  * An implementation of WordGrid, utilizing arrays as the underlying structures
@@ -22,11 +23,7 @@ public class WordGridArrayImpl implements WordGrid {
      */
     public void printFinalCharacterGrid() {
         for (int i = 0; i < this.finalCharGrid.length; i++) {
-            String word = "";
-            for (int j = 0; j < this.finalCharGrid[0].length; j++) {
-                word += this.finalCharGrid[i][j];
-            }
-            log.info(word);
+            log.info(String.valueOf(this.finalCharGrid[i]).trim());
         }
     }
 
@@ -97,5 +94,9 @@ public class WordGridArrayImpl implements WordGrid {
             this.finalCharGrid[row][j] = NULL_CHAR;
             this.finalCharGrid[j][row] = NULL_CHAR;
         }
+    }
+
+    public String getRowSoFar(int row) {
+        return String.valueOf(this.finalCharGrid[row]).trim();
     }
 }

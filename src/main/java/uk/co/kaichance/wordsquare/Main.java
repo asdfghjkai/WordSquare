@@ -3,10 +3,10 @@ package uk.co.kaichance.wordsquare;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import uk.co.kaichance.wordsquare.algorithm.CoreAlgorithm;
-import uk.co.kaichance.wordsquare.dao.InputHandler;
-import uk.co.kaichance.wordsquare.dao.WordGrid;
-import uk.co.kaichance.wordsquare.dao.WordGridArrayImpl;
-import uk.co.kaichance.wordsquare.dao.WordGridMapImpl;
+import uk.co.kaichance.wordsquare.dao.*;
+import uk.co.kaichance.wordsquare.dao.wordgrid.WordGrid;
+import uk.co.kaichance.wordsquare.dao.wordgrid.WordGridFactory;
+import uk.co.kaichance.wordsquare.dao.wordgrid.WordGridImplType;
 import uk.co.kaichance.wordsquare.util.ArgumentValidation;
 import uk.co.kaichance.wordsquare.util.MapUtils;
 import uk.co.kaichance.wordsquare.util.WordListUtils;
@@ -51,9 +51,9 @@ public class Main {
             String inputString = args[1];
             WordGrid wg;
             if (args.length > 3 && args[3].equalsIgnoreCase(PARAMETER_ARRAY)) {
-                wg = new WordGridArrayImpl(wordSize);
+                wg = WordGridFactory.getWordGridImpl(WordGridImplType.ARRAY, wordSize);
             } else {
-                wg = new WordGridMapImpl(wordSize);
+                wg = WordGridFactory.getWordGridImpl(WordGridImplType.MAP, wordSize);
             }
             
             InputHandler input = new InputHandler(inputString.toLowerCase());
