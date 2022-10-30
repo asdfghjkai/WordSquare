@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import uk.co.kaichance.wordsquare.algorithm.CoreAlgorithm;
 import uk.co.kaichance.wordsquare.dao.Input;
 import uk.co.kaichance.wordsquare.dao.WordGrid;
+import uk.co.kaichance.wordsquare.dao.WordGridArrayImpl;
+import uk.co.kaichance.wordsquare.dao.WordGridMapImpl;
 import uk.co.kaichance.wordsquare.util.ArgumentValidation;
 import uk.co.kaichance.wordsquare.util.MapUtils;
 import uk.co.kaichance.wordsquare.util.WordListUtils;
@@ -26,9 +28,13 @@ public class Main {
 
             int wordSize = Integer.parseInt(args[0]);
             String inputString = args[1];
-
-            //Launch WordSquare Functionality
-            WordGrid wg = new WordGrid(wordSize);
+            WordGrid wg;
+            if (args.length > 3 && args[3].equalsIgnoreCase("array")) {
+                wg = new WordGridArrayImpl(wordSize);
+            } else {
+                wg = new WordGridMapImpl(wordSize);
+            }
+            
             Input input = new Input(inputString.toLowerCase());
             String dictionaryFile = args.length > 2 ? args[2] : DEFAULT_FILENAME;
             List<String> words = WordListUtils.processList(dictionaryFile, input.getCharacterIntegerMap().keySet(), wordSize);
