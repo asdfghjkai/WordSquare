@@ -31,7 +31,8 @@ public class CoreAlgorithm {
         if (currentDepth == maxDepth) {
             return true; // Close the 'loop'
         }
-        List<String> depthWords = words.stream().filter(word -> currentDepthFilter(word, remainingCharacters))
+        List<String> depthWords = words.stream()
+                .filter(word -> currentDepthFilter(word, remainingCharacters))
                 .sorted()
                 .collect(Collectors.toList());
 
@@ -72,7 +73,7 @@ public class CoreAlgorithm {
             characterIntegerMap.merge(c, 1, Integer::sum);
         }
         for (Map.Entry<Character, Integer> entry : characterIntegerMap.entrySet()) {
-            if (characterIntegerMap.get(entry.getKey()) < entry.getValue()) { //wg.placeCount.get(row[i])
+            if (remainingCharacters.get(entry.getKey()) < entry.getValue()) { //wg.placeCount.get(row[i])
                 return false;
             }
         }
