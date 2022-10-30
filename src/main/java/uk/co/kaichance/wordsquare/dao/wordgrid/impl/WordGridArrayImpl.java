@@ -70,7 +70,7 @@ public class WordGridArrayImpl implements WordGrid {
      * </ol>
      * @param row desired target row
      * @param characters Character array to be placed
-     * @return
+     * @return true if insertion would be valid, otherwise false
      */
     public boolean validateRow(int row, char[] characters) {
         for (int j = 0; j < characters.length; j++) {

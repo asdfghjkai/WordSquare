@@ -14,8 +14,8 @@ public class MapUtils {
     /**
      * Create a deep copy of a map of types given
      *
-     * @param inputMap
-     * @return
+     * @param inputMap Map to make deep clone of
+     * @return Deep cloned copy
      */
     public static Map<Character, Integer> deepCloneMap(Map<Character, Integer> inputMap) {
         Map<Character, Integer> newMap = new HashMap<>(inputMap.size());

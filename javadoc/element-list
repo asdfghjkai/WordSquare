@@ -1,4 +1,6 @@
 uk.co.kaichance.wordsquare
 uk.co.kaichance.wordsquare.algorithm
 uk.co.kaichance.wordsquare.dao
+uk.co.kaichance.wordsquare.dao.wordgrid
+uk.co.kaichance.wordsquare.dao.wordgrid.impl
 uk.co.kaichance.wordsquare.util

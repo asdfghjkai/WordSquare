@@ -32,22 +32,22 @@ public interface WordGrid {
     /**
      * The implementing method should validate that the characters supplied can be
      * validly placed on the row desired
-     * @param row
-     * @param characters
-     * @return
+     * @param row row to validate against
+     * @param characters character to validate insertion
+     * @return true if valid, otherwise false
      */
     boolean validateRow(int row, char[] characters);
 
     /**
      * The implementing method should clear the row provided, taking note of that [i][j] and [j][i] should BOTH be cleared.
-     * @param row
+     * @param row row to clear
      */
     void clearRow(int row);
 
     /**
      * Intended to output the row as it has been built - primarily for testing purposes
-     * @param row
-     * @return
+     * @param row row to retrieve
+     * @return retrieve string representing contents of row requested
      */
     String getRowSoFar(int row);
 

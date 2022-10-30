@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"uk.co.kaichance.wordsquare"},{"l":"uk.co.kaichance.wordsquare.algorithm"},{"l":"uk.co.kaichance.wordsquare.dao"},{"l":"uk.co.kaichance.wordsquare.util"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"uk.co.kaichance.wordsquare"},{"l":"uk.co.kaichance.wordsquare.algorithm"},{"l":"uk.co.kaichance.wordsquare.dao"},{"l":"uk.co.kaichance.wordsquare.dao.wordgrid"},{"l":"uk.co.kaichance.wordsquare.dao.wordgrid.impl"},{"l":"uk.co.kaichance.wordsquare.util"}]

@@ -84,7 +84,7 @@ public class WordGridMapImpl implements WordGrid {
      * </ol>
      * @param row desired target row
      * @param characters Character array to be placed
-     * @return
+     * @return true if characters would be valid in row, otherwise false
      */
     public boolean validateRow(int row, char[] characters) {
         for (int j = 0; j < characters.length; j++) {
@@ -102,7 +102,7 @@ public class WordGridMapImpl implements WordGrid {
     /**
      * Clear row using staircasing <code>[i][j] == [j][i]</code> rule
      *
-     * @param row
+     * @param row row to clear
      */
     public void clearRow(int row) {
         for (int j = row; j < this.size; j++) {
@@ -112,9 +112,9 @@ public class WordGridMapImpl implements WordGrid {
     }
 
     /**
-     * Iterates through coordinats, outputting the desired row
-     * @param row
-     * @return
+     * Iterates through coordinates, outputting the desired row
+     * @param row Row to retrieve
+     * @return String containing contents of row specified
      */
     public String getRowSoFar(int row) {
         String rowSoFar = StringUtils.EMPTY;
