@@ -35,6 +35,7 @@ Output is to the command line. Both the dictionary and array arguments are optio
 | array            | (Optional*) Specifies the mode for the WordGrid to operate in. 'array' uses arrays to back the grid, no argument uses a map |
 To view diagnostic outputs, alter [logback.xml](src/main/resources/logback.xml)
 
+Ensure that the dictionary file is placed in the same directory as the JAR.
 ## Requirements
 When building code, ensure the following
 - IDE has Lombok plugin enabled
