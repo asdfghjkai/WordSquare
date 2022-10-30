@@ -2,6 +2,9 @@ package uk.co.kaichance.wordsquare.dao;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * An implementation of WordGrid, utilizing arrays as the underlying structures
+ */
 @Slf4j
 public class WordGridArrayImpl implements WordGrid {
     private char[][] finalCharGrid;
@@ -13,6 +16,10 @@ public class WordGridArrayImpl implements WordGrid {
         this.finalCharGrid = new char[size][size];
     }
 
+    /**
+     * Prints characters held within the internal grid, by iterating through
+     * each entry of each array
+     */
     public void printFinalCharacterGrid() {
         for (int i = 0; i < this.finalCharGrid.length; i++) {
             String word = "";
@@ -23,10 +30,23 @@ public class WordGridArrayImpl implements WordGrid {
         }
     }
 
+    /**
+     * Insert the provided string into the internal arrays
+     * @param chars Characters to place on row
+     * @param row Desired row to place characters on
+     * @return Success state
+     */
     public boolean insertToGrid(String chars, int row) {
         return insertToGrid(chars.toCharArray(), row);
     }
 
+
+    /**
+     * Insert the provided characters into the internal array - utilizing {@link #validateRow(int, char[])}
+     * @param chars Characters to place on row
+     * @param row Desired row to place characters on
+     * @return Success state
+     */
     public boolean insertToGrid(char[] chars, int row) {
         if (chars.length != this.finalCharGrid.length) {
             return false;
@@ -45,6 +65,16 @@ public class WordGridArrayImpl implements WordGrid {
         }
     }
 
+    /**
+     * Ensure that the characters given are able to be inserted into the desired row using the following rules
+     * <ol>
+     *     <li>The existing character in null</li>
+     *     <li>The existing character is equal to that which is due to be placed</li>
+     * </ol>
+     * @param row desired target row
+     * @param characters Character array to be placed
+     * @return
+     */
     public boolean validateRow(int row, char[] characters) {
         for (int j = 0; j < characters.length; j++) {
             if (row != j) {
@@ -58,9 +88,9 @@ public class WordGridArrayImpl implements WordGrid {
     }
 
     /**
-     * Clear row using staircasing rule(?)
+     * Clear row using staircasing <code>[i][j] == [j][i]</code> rule
      *
-     * @param row
+     * @param row row to be cleared
      */
     public void clearRow(int row) {
         for (int j = row; j < this.finalCharGrid[row].length; j++) {

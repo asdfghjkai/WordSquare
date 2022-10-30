@@ -7,12 +7,13 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * An implementation of WordGrid, utilizing Maps, with immutable Pair tuples in i,j form, as the key
+ */
 @Slf4j
 public class WordGridMapImpl implements WordGrid {
     private Map<Pair<Integer, Integer>, Character> characterMap;
     private int size;
-    private static final char NULL_CHAR = '\u0000';
-
 
     public WordGridMapImpl(int size) {
         log.debug("Assemble WordGrid");
@@ -25,6 +26,10 @@ public class WordGridMapImpl implements WordGrid {
         }
     }
 
+    /**
+     * Prints characters held within the internal grid, by iterating through
+     * each entry of each array
+     */
     public void printFinalCharacterGrid() {
         for (int i = 0; i < this.size; i++) {
             String word = "";
@@ -35,10 +40,22 @@ public class WordGridMapImpl implements WordGrid {
         }
     }
 
+    /**
+     * Insert the provided string into the internal map
+     * @param chars Characters to place on row
+     * @param row Desired row to place characters on
+     * @return Success state
+     */
     public boolean insertToGrid(String chars, int row) {
         return insertToGrid(chars.toCharArray(), row);
     }
 
+    /**
+     * Insert the provided characters into the internal map - utilizing {@link #validateRow(int, char[])}
+     * @param chars Characters to place on row
+     * @param row Desired row to place characters on
+     * @return Success state
+     */
     public boolean insertToGrid(char[] chars, int row) {
         if (chars.length != this.size) {
             return false;
@@ -57,6 +74,16 @@ public class WordGridMapImpl implements WordGrid {
         }
     }
 
+    /**
+     * Ensure that the characters given are able to be inserted into the desired row using the following rules
+     * <ol>
+     *     <li>The existing character in null</li>
+     *     <li>The existing character is equal to that which is due to be placed</li>
+     * </ol>
+     * @param row desired target row
+     * @param characters Character array to be placed
+     * @return
+     */
     public boolean validateRow(int row, char[] characters) {
         for (int j = 0; j < characters.length; j++) {
             if (row != j) {
@@ -71,7 +98,7 @@ public class WordGridMapImpl implements WordGrid {
     }
 
     /**
-     * Clear row using staircasing rule(?)
+     * Clear row using staircasing <code>[i][j] == [j][i]</code> rule
      *
      * @param row
      */

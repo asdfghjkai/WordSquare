@@ -3,6 +3,9 @@ package uk.co.kaichance.wordsquare.util;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Utility Class for Map Objects
+ */
 public class MapUtils {
 
     private MapUtils() {
